@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>Vrypt API - Test & Explore APIs in Real-Time</title>
+    <meta name="title" content="Vrypt API - Test & Explore APIs in Real-Time">
+    <meta name="description" content="The ultimate API testing platform. Test REST APIs, GraphQL, WebSockets, and more with our powerful, intuitive interface. Built for developers, by developers.">
+    <meta name="keywords" content="api testing, rest api, graphql, api playground, developer tools, api documentation, postman alternative, api client, vrypt, vrypt api, docs vrypt, ">
+    <meta name="author" content="Vrypt API">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://docs.vrypt.my.id">
+    <meta property="og:title" content="Vrypt API - Test & Explore APIs in Real-Time">
+    <meta property="og:description" content="The ultimate API testing platform for modern developers. Test any API with ease.">
+    <meta property="og:image" content="https://docs.vrypt.my.id/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://docs.vrypt.my.id">
+    <meta property="twitter:title" content="Vrypt API - Test & Explore APIs in Real-Time">
+    <meta property="twitter:description" content="The ultimate API testing platform for modern developers.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- External Resources -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-lighter: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #06b6d4 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            opacity: 0.05;
+            z-index: -2;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0.6;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--secondary);
+            animation-duration: 25s;
+        }
+
+        .particle:nth-child(3n) {
+            background: var(--success);
+            animation-duration: 30s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-start-testing {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white !important;
+            padding: 0.75rem 1.5rem !important;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-start-testing:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary)) !important;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Demo */
+        .hero-demo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-window {
+            background: var(--dark-lighter);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .demo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .demo-dot.red { background: var(--danger); }
+        .demo-dot.yellow { background: var(--warning); }
+        .demo-dot.green { background: var(--success); }
+
+        .demo-title {
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .demo-content {
+            padding: 1.5rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .demo-line {
+            display: flex;
+            margin-bottom: 0.5rem;
+            animation: typewriter 0.5s ease-in;
+        }
+
+        .demo-method {
+            color: var(--success);
+            font-weight: bold;
+            min-width: 60px;
+        }
+
+        .demo-url {
+            color: var(--secondary);
+        }
+
+        .demo-status {
+            color: var(--success);
+            margin-left: auto;
+        }
+
+        @keyframes typewriter {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .feature-card:hover::before {
+            height: 2px;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        /* API Methods Section */
+        .api-methods {
+            padding: 8rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .methods-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--method-color, var(--primary));
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--method-color, var(--primary));
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .method-card.get { --method-color: var(--success); }
+        .method-card.post { --method-color: var(--primary); }
+        .method-card.put { --method-color: var(--warning); }
+        .method-card.delete { --method-color: var(--danger); }
+        .method-card.patch { --method-color: var(--secondary); }
+
+        .method-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--method-color, var(--primary));
+            margin-bottom: 0.5rem;
+        }
+
+        .method-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .methods-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .footer-container {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                Vrypt API
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#api-methods">API Methods</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#" class="btn-start-testing">Start Testing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>
+                        Test APIs Like a <span class="gradient-text">Pro</span>
+                    </h1>
+                    <p class="subtitle">
+                        The most powerful and intuitive API testing platform. Test REST APIs, GraphQL, WebSockets, and more with lightning-fast performance and beautiful interface.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="/docs" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start Testing Now
+                        </a>
+                        <a href="/docs" class="btn btn-secondary">
+                            <i class="fas fa-book"></i> View Documentation
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10M+</span>
+                            <span class="stat-label">API Calls</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50K+</span>
+                            <span class="stat-label">Developers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99.9%</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-demo">
+                    <div class="demo-window">
+                        <div class="demo-header">
+                            <div class="demo-dots">
+                                <div class="demo-dot red"></div>
+                                <div class="demo-dot yellow"></div>
+                                <div class="demo-dot green"></div>
+                            </div>
+                            <span class="demo-title">api-playground.dev</span>
+                        </div>
+                        <div class="demo-content">
+                            <div class="demo-line">
+                                <span class="demo-method">GET</span>
+                                <span class="demo-url">/api/v1/users</span>
+                                <span class="demo-status">200 OK</span>
+                            </div>
+                            <div class="demo-line">
+                                <span class="demo-method">POST</span>
+                                <span class="demo-url">/api/v1/users</span>
+                                <span class="demo-status">201 Created</span>
+                            </div>
+                            <div class="demo-line">
+                                <span class="demo-method">PUT</span>
+                                <span class="demo-url">/api/v1/users/123</span>
+                                <span class="demo-status">200 OK</span>
+                            </div>
+                            <div class="demo-line">
+                                <span class="demo-method">DELETE</span>
+                                <span class="demo-url">/api/v1/users/123</span>
+                                <span class="demo-status">204 No Content</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">
+                    Everything you need to test, debug, and optimize your APIs
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Execute API requests with sub-second response times. Optimized for speed and performance.</p>
+                    <a href="#" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Multiple Protocols</h3>
+                    <p>Support for REST, GraphQL, WebSockets, and more. One platform for all your API testing needs.</p>
+                    <a href="#" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>Built with security first. OAuth, JWT, API keys, and custom authentication methods supported.</p>
+                    <a href="#" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Monitor API performance, response times, and success rates with detailed analytics dashboard.</p>
+                    <a href="#" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Collaboration</h3>
+                    <p>Share collections, environments, and test results with your team. Perfect for agile development.</p>
+                    <a href="#" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Advanced Testing</h3>
+                    <p>Pre-request scripts, test assertions, data-driven testing, and automated test suites.</p>
+                    <a href="#" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Methods Section -->
+        <section id="api-methods" class="api-methods">
+            <div class="methods-container">
+                <div class="section-header">
+                    <h2 class="section-title">Support for All HTTP Methods</h2>
+                    <p class="section-subtitle">
+                        Test any API endpoint with full support for all standard HTTP methods
+                    </p>
+                </div>
+                
+                <div class="methods-grid">
+                    <div class="method-card get">
+                        <div class="method-name">GET</div>
+                        <div class="method-description">Retrieve data from server</div>
+                    </div>
+                    
+                    <div class="method-card post">
+                        <div class="method-name">POST</div>
+                        <div class="method-description">Send data to create resources</div>
+                    </div>
+                    
+                    <div class="method-card put">
+                        <div class="method-name">PUT</div>
+                        <div class="method-description">Update existing resources</div>
+                    </div>
+                    
+                    <div class="method-card delete">
+                        <div class="method-name">DELETE</div>
+                        <div class="method-description">Remove resources from server</div>
+                    </div>
+                    
+                    <div class="method-card patch">
+                        <div class="method-name">PATCH</div>
+                        <div class="method-description">Partial resource updates</div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-name">HEAD</div>
+                        <div class="method-description">Get response headers only</div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-name">OPTIONS</div>
+                        <div class="method-description">Check available methods</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="features">
+            <div class="section-header">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">
+                    Choose the plan that fits your needs. All plans include our core features.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Free</h3>
+                    <p style="font-size: 2rem; font-weight: 800; color: var(--success); margin: 1rem 0;">$0</p>
+                    <p>Perfect for getting started with API testing. Includes basic features and limited requests.</p>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--gray);">
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> 1,000 requests/month</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Basic HTTP methods</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Community support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="width: 100%; justify-content: center;">Get Started</a>
+                </div>
+
+                <div class="feature-card" style="border: 2px solid var(--primary); position: relative;">
+                    <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">POPULAR</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Pro</h3>
+                    <p style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 1rem 0;">$29<span style="font-size: 1rem; color: var(--gray);">/month</span></p>
+                    <p>Everything you need for professional API development and testing workflows.</p>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--gray);">
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> 100,000 requests/month</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> All HTTP methods</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Team collaboration</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Priority support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Free Trial</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Enterprise</h3>
+                    <p style="font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 1rem 0;">Custom</p>
+                    <p>Advanced features and dedicated support for large teams and organizations.</p>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0; color: var(--gray);">
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Unlimited requests</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Custom integrations</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> SSO & security</li>
+                        <li style="margin: 0.5rem 0;"><i class="fas fa-check" style="color: var(--success); margin-right: 0.5rem;"></i> Dedicated support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="width: 100%; justify-content: center;">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2 class="cta-title">Ready to Transform Your API Testing?</h2>
+                <p class="cta-subtitle">
+                    Join thousands of developers who trust API Playground for their testing needs. 
+                    Start your free trial today and experience the difference.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Start Free Trial
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-calendar"></i> Schedule Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Vrypt API</h3>
+                <p>The most powerful and intuitive API testing platform for modern developers. Built with love for the developer community.</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#" style="color: var(--primary); margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: var(--primary); margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: var(--primary); margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Changelog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Vrypt API. Built with <span style="color: var(--danger);">❤️</span> for developers worldwide.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 20) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.98)';
+                nav.style.backdropFilter = 'blur(20px)';
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.backdropFilter = 'blur(20px)';
+                nav.style.boxShadow = 'none';
+            }
+
+            // Hide navbar on scroll down
+            if (currentScroll > lastScrollTop && currentScroll > 200) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
+        // Enhanced hover effects
+        document.querySelectorAll('.feature-card, .method-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = this.classList.contains('method-card') 
+                    ? 'translateY(-5px) scale(1.02)' 
+                    : 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Demo terminal animation
+        function animateDemo() {
+            const demoLines = document.querySelectorAll('.demo-line');
+            demoLines.forEach((line, index) => {
+                line.style.opacity = '0';
+                line.style.transform = 'translateX(-20px)';
+                
+                setTimeout(() => {
+                    line.style.transition = 'all 0.5s ease';
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateX(0)';
+                }, index * 200 + 1000);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Trigger demo animation when hero section is visible
+                    if (entry.target.classList.contains('hero')) {
+                        animateDemo();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const targets = ['10M+', '50K+', '99.9%'];
+            
+            counters.forEach((counter, index) => {
+                const target = targets[index];
+                let current = 0;
+                const increment = target.includes('M') ? 100000 : target.includes('K') ? 500 : 0.1;
+                const final = parseFloat(target.replace(/[^\d.]/g, '')) * (target.includes('M') ? 1000000 : target.includes('K') ? 1000 : 1);
+                
+                const updateCounter = () => {
+                    if (current < final) {
+                        current += increment;
+                        if (target.includes('%')) {
+                            counter.textContent = (current / 1).toFixed(1) + '%';
+                        } else if (target.includes('M')) {
+                            counter.textContent = (current / 1000000).toFixed(0) + 'M+';
+                        } else if (target.includes('K')) {
+                            counter.textContent = (current / 1000).toFixed(0) + 'K+';
+                        }
+                        setTimeout(updateCounter, 50);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                setTimeout(updateCounter, index * 200 + 2000);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            animateCounters();
+        });
+
+        // Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log(`Page loaded in ${loadTime}ms`);
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+
+        // Focus management for accessibility
+        document.querySelectorAll('.btn, .nav-links a, .feature-link').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.outline = '2px solid var(--primary)';
+                this.style.outlineOffset = '2px';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

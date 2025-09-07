@@ -1,0 +1,12 @@
+<div id="swagger-ui" class="max-w-7xl mx-auto px-4 py-6"></div>
+
+<script>
+  window.onload = () => {
+    SwaggerUIBundle({
+      url: "/api/openapi.json",
+      dom_id: "#swagger-ui",
+      presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+      layout: "StandaloneLayout"
+    });
+  };
+</script>

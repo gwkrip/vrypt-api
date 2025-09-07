@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <title>Vrypt API - Dokumentasi REST API Indonesia</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Dokumentasi REST API Vrypt API - Platform API Gratis untuk Developer Indonesia</title>
+    <meta name="description" content="Platform dokumentasi API lengkap dengan endpoint GET yang mudah digunakan. Solusi REST API gratis, cepat dan handal untuk pengembangan aplikasi modern." />
+    <meta name="keywords" content="dokumentasi api indonesia, rest api gratis, public api, free api, endpoint documentation, developer tools indonesia, api integration guide" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Vrypt API" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="notranslate" />
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzM5OEJGNCIvPgo8cGF0aCBkPSJNMTYuNSA4VjI0TDguNSAxNkgxNlY4SDI0TDE2LjUgOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vrypt API - Platform Dokumentasi API Indonesia" />
+    <meta property="og:description" content="Platform dokumentasi API terlengkap dengan berbagai endpoint gratis untuk kebutuhan pengembangan aplikasi modern." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://docs.vrypt.my.id/documentation" />
+    <meta property="og:site_name" content="Vrypt API" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:image" content="https://docs.vrypt.my.id/images/og-documentation.png" />
+    <meta property="og:image:alt" content="Vrypt API - Platform Dokumentasi API" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vrypt API - Platform API Gratis Indonesia" />
+    <meta name="twitter:description" content="Dokumentasi lengkap API endpoints untuk developer Indonesia. Platform gratis dan terpercaya." />
+    <meta name="twitter:image" content="https://docs.vrypt.my.id/images/twitter-card.png" />
+    <meta name="twitter:creator" content="@Vrypt APIhub" />
+    <meta name="twitter:site" content="@Vrypt APIhub" />
+
+    <!-- Schema.org: Documentation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Vrypt API - Dokumentasi API Platform",
+      "alternativeHeadline": "Panduan lengkap penggunaan REST API Indonesia",
+      "image": "https://docs.vrypt.my.id/images/documentation-hero.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Vrypt API Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vrypt API",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://docs.vrypt.my.id/images/logo.png"
+        }
+      },
+      "url": "https://docs.vrypt.my.id/documentation",
+      "datePublished": "2024-09-07",
+      "dateModified": "2024-09-07",
+      "description": "Platform dokumentasi API terlengkap untuk developer Indonesia dengan berbagai endpoint gratis dan mudah diintegrasikan."
+    }
+    </script>
+
+    <!-- BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://docs.vrypt.my.id"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dokumentasi API",
+          "item": "https://docs.vrypt.my.id/docs"
+        }
+      ]
+    }
+    </script>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.17.14/swagger-ui.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.17.14/swagger-ui-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.17.14/swagger-ui-standalone-preset.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.32/sweetalert2.all.min.js"></script>
+    
+    <style>
+      :root {
+        --primary-bg: #0f172a;
+        --secondary-bg: #1e293b;
+        --accent-color: #3b82f6;
+        --text-primary: #e2e8f0;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+      }
+
+      html {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+      }
+      
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      
+      body {
+        margin: 0;
+        background: var(--primary-bg);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+      }
+
+      /* Enhanced Swagger UI Dark Theme */
+      .swagger-ui {
+        background: var(--primary-bg);
+      }
+      
+      .swagger-ui a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      
+      .swagger-ui a:hover {
+        color: #60a5fa;
+      }
+      
+      .swagger-ui .info .title,
+      .swagger-ui .opblock-tag,
+      .swagger-ui .opblock .opblock-section-header h4,
+      .swagger-ui .scheme-container,
+      .swagger-ui .dialog-ux .modal-ux-header h3,
+      .swagger-ui .dialog-ux .modal-ux-content h4 {
+        color: var(--text-primary);
+      }
+      
+      .swagger-ui .parameter__name,
+      .swagger-ui .parameter__type,
+      .swagger-ui .parameter__deprecated,
+      .swagger-ui .parameter__in,
+      .swagger-ui table thead tr th,
+      .swagger-ui .response-col_status,
+      .swagger-ui table thead tr td,
+      .swagger-ui label,
+      .swagger-ui .tab li,
+      .swagger-ui .opblock .opblock-section-header label,
+      .swagger-ui .opblock-description-wrapper p,
+      .swagger-ui .opblock-external-docs-wrapper p,
+      .swagger-ui .opblock-title_normal p,
+      .swagger-ui .info li,
+      .swagger-ui .info p,
+      .swagger-ui .info table,
+      .swagger-ui .model,
+      .swagger-ui .model-title,
+      .swagger-ui .model .property.primitive,
+      .swagger-ui .responses-inner h4,
+      .swagger-ui .responses-inner h5,
+      .swagger-ui .renderedMarkdown,
+      .swagger-ui .opblock-tag small {
+        color: var(--text-secondary);
+      }
+
+      /* HTTP Methods Color Scheme */
+      .swagger-ui .opblock.opblock-get .opblock-summary-method,
+      .swagger-ui .opblock-get .btn.execute {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+      }
+      
+      .swagger-ui .opblock.opblock-post .opblock-summary-method,
+      .swagger-ui .opblock-post .btn.execute {
+        background: var(--success-color);
+        border-color: var(--success-color);
+      }
+      
+      .swagger-ui .opblock.opblock-put .opblock-summary-method,
+      .swagger-ui .opblock-put .btn.execute {
+        background: var(--warning-color);
+        border-color: var(--warning-color);
+      }
+      
+      .swagger-ui .opblock.opblock-delete .opblock-summary-method,
+      .swagger-ui .opblock-delete .btn.execute {
+        background: var(--error-color);
+        border-color: var(--error-color);
+      }
+
+      /* Form Elements */
+      .swagger-ui .info .title,
+      .swagger-ui .scheme-container,
+      .swagger-ui select,
+      .swagger-ui textarea,
+      .swagger-ui input[type='text'],
+      .swagger-ui input[type='email'],
+      .swagger-ui input[type='file'],
+      .swagger-ui input[type='password'],
+      .swagger-ui input[type='search'],
+      .swagger-ui textarea,
+      .swagger-ui .topbar,
+      .swagger-ui .dialog-ux .modal-ux {
+        background: var(--primary-bg);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+      }
+
+      .swagger-ui .opblock-summary-path span {
+        color: var(--text-primary) !important;
+        font-weight: 500;
+      }
+
+      /* Custom Search Styling */
+      .search-container {
+        position: relative;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .search-container input {
+        width: 100%;
+        padding: 12px 16px 12px 48px;
+        background: var(--secondary-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        color: var(--text-primary);
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+      
+      .search-container input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      
+      .search-container input::placeholder {
+        color: var(--text-muted);
+      }
+      
+      .search-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Navigation */
+      .navbar {
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+      }
+      
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--text-primary);
+        text-decoration: none;
+      }
+      
+      .navbar-logo {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--accent-color), #1d4ed8);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      }
+
+      /* Layout Improvements */
+      .top-layout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 40px;
+        margin: 24px 0;
+        gap: 24px;
+      }
+      
+      .swagger-ui .topbar {
+        display: none !important;
+      }
+      
+      .swagger-ui .wrapper {
+        padding: 0 24px;
+      }
+      
+      .swagger-ui .info {
+        margin: 24px 0;
+      }
+      
+      .swagger-ui .info .title {
+        font-size: 42px;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent-color), #60a5fa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 16px;
+      }
+
+      /* Enhanced Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: var(--primary-bg);
+        border-radius: 5px;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #475569;
+      }
+
+      /* Loading Animation */
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--text-muted);
+        border-radius: 50%;
+        border-top-color: var(--accent-color);
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .top-layout {
+          flex-direction: column;
+          gap: 16px;
+          padding: 16px 20px;
+        }
+        
+        .search-container {
+          max-width: 100%;
+        }
+        
+        .swagger-ui .wrapper {
+          padding: 0 16px;
+        }
+        
+        .swagger-ui .info .title {
+          font-size: 32px;
+        }
+      }
+
+      /* Enhanced Footer */
+      .footer {
+        background: linear-gradient(135deg, var(--secondary-bg), var(--primary-bg));
+        border-top: 1px solid var(--border-color);
+      }
+      
+      .footer-section h4 {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 16px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .footer-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: block;
+        padding: 4px 0;
+      }
+      
+      .footer-link:hover {
+        color: var(--accent-color);
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 12px;
+      }
+      
+      .social-link {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      
+      .social-link:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Custom Alert Styling */
+      .swal2-popup.swal2-toast {
+        background: var(--secondary-bg) !important;
+        color: var(--text-primary) !important;
+      }
+      
+      .custom-alert {
+        font-family: inherit;
+      }
+      
+      .custom-alert .swal2-title {
+        color: var(--text-primary);
+        font-weight: 700;
+      }
+      
+      .custom-alert .swal2-html-container {
+        color: var(--text-secondary);
+      }
+
+      /* Operation Block Enhancements */
+      .swagger-ui .opblock:hover {
+        border-width: 1px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-1px);
+        transition: all 0.3s ease;
+      }
+      
+      .swagger-ui .opblock {
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        transition: all 0.3s ease;
+      }
+
+      /* Enhanced Tag Styling */
+      .swagger-ui .opblock-tag {
+        border-radius: 8px;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, var(--secondary-bg), rgba(51, 65, 85, 0.5));
+      }
+
+      /* Status Indicators */
+      .status-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      
+      .status-online {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success-color);
+      }
+      
+      .status-maintenance {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning-color);
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar fixed w-full z-50" style="background: rgba(15, 23, 42, 0.95);">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="navbar-brand">
+            <div class="navbar-logo">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <span>Vrypt API</span>
+          </a>
+          <div class="flex items-center gap-4">
+            <div class="status-indicator status-online">
+              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>Aktif</span>
+            </div>
+            <a href="/" class="text-gray-400 hover:text-white transition-colors duration-300 font-medium">
+              Beranda
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div id="swagger-ui" style="padding-top: 64px;"></div>
+    
+    <script>
+      window.onload = function () {
+        // Theme configuration
+        const isDarkMode = true;
+        
+        // Initialize Swagger UI
+        const ui = SwaggerUIBundle({
+          url: '/api/openapi.json',
+          dom_id: '#swagger-ui',
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          layout: 'StandaloneLayout',
+          deepLinking: true,
+          displayOperationId: false,
+          defaultModelsExpandDepth: 0,
+          defaultModelExpandDepth: 0,
+          displayRequestDuration: true,
+          filter: false,
+          operationsSorter: (a, b) => a.get('path').localeCompare(b.get('path')),
+          tagsSorter: 'alpha',
+          validatorUrl: null,
+          
+          // Enhanced completion callback
+          onComplete: function () {
+            // Welcome notification with improved styling
+            Swal.fire({
+              title: '🚀 Selamat Datang di Vrypt API!',
+              html: `
+                <div style="text-align: left; margin-top: 16px;">
+                  <p style="margin-bottom: 12px;">Platform dokumentasi API terlengkap untuk developer Indonesia!</p>
+                  <ul style="margin-left: 20px; color: #6B7280;">
+                    <li>✅ API Endpoints Gratis & Terpercaya</li>
+                    <li>📚 Dokumentasi Lengkap & Mudah Dipahami</li>
+                    <li>⚡ Response Cepat & Stabil</li>
+                    <li>🔄 Update Berkala</li>
+                  </ul>
+                  <p style="margin-top: 16px; font-size: 14px; color: #9CA3AF;">
+                    Mulai eksplorasi API endpoints dan integrasikan ke dalam proyek Anda!
+                  </p>
+                </div>
+              `,
+              background: isDarkMode ? '#1F2937' : '#FFFFFF',
+              color: isDarkMode ? '#FFFFFF' : '#000000',
+              confirmButtonText: '🎯 Mulai Eksplorasi',
+              confirmButtonColor: '#3B82F6',
+              showCloseButton: true,
+              customClass: {
+                popup: 'custom-alert font-sans',
+                title: 'text-xl font-bold',
+                confirmButton: 'px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-all duration-200 font-medium'
+              },
+              showClass: {
+                popup: 'animate__animated animate__fadeInUp animate__faster'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutDown animate__faster'
+              }
+            }).then(result => {
+              if (result.isConfirmed) {
+                // Scroll to first endpoint
+                const firstEndpoint = document.querySelector('.opblock');
+                if (firstEndpoint) {
+                  firstEndpoint.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }
+            });
+
+            // Create enhanced top layout
+            const topLayout = document.createElement('div');
+            topLayout.className = 'top-layout';
+
+            // Enhanced search container
+            const searchContainer = document.createElement('div');
+            searchContainer.className = 'search-container';
+            searchContainer.innerHTML = `
+              <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input type="text" id="enhanced-search-input" placeholder="Cari endpoint, method, atau deskripsi...">
+            `;
+            topLayout.appendChild(searchContainer);
+
+            // Add scheme container if exists
+            const schemeContainer = document.querySelector('.scheme-container');
+            if (schemeContainer) {
+              topLayout.appendChild(schemeContainer);
+            }
+
+            // Insert after info element
+            const infoElement = document.querySelector('.information-container');
+            if (infoElement) {
+              infoElement.after(topLayout);
+            }
+
+            // Enhanced search functionality
+            const searchInput = document.getElementById('enhanced-search-input');
+            let searchTimeout;
+
+            searchInput.addEventListener('input', function (e) {
+              const searchTerm = e.target.value.toLowerCase().trim();
+              
+              // Debounce search
+              clearTimeout(searchTimeout);
+              searchTimeout = setTimeout(() => {
+                performSearch(searchTerm);
+              }, 300);
+            });
+
+            function performSearch(searchTerm) {
+              let totalVisible = 0;
+              let totalEndpoints = 0;
+
+              document.querySelectorAll('.opblock-tag').forEach(tag => {
+                let hasVisibleOperation = false;
+                let tagOperationsCount = 0;
+                let tagVisibleCount = 0;
+
+                const operationsContainer = tag.nextElementSibling;
+                if (!operationsContainer) return;
+
+                operationsContainer.querySelectorAll('.opblock').forEach(op => {
+                  tagOperationsCount++;
+                  totalEndpoints++;
+
+                  const path = op.querySelector('.opblock-summary-path')?.textContent?.toLowerCase() || '';
+                  const method = op.querySelector('.opblock-summary-method')?.textContent?.toLowerCase() || '';
+                  const summary = op.getAttribute('data-summary')?.toLowerCase() || '';
+
+                  const isVisible = searchTerm === '' || 
+                                  path.includes(searchTerm) || 
+                                  method.includes(searchTerm) || 
+                                  summary.includes(searchTerm);
+
+                  op.style.display = isVisible ? 'block' : 'none';
+                  
+                  if (isVisible) {
+                    hasVisibleOperation = true;
+                    tagVisibleCount++;
+                    totalVisible++;
+                  }
+                });
+
+                // Update tag visibility and counter
+                tag.style.display = hasVisibleOperation ? 'block' : 'none';
+                operationsContainer.style.display = hasVisibleOperation ? 'block' : 'none';
+
+                if (searchTerm && hasVisibleOperation) {
+                  const tagText = tag.textContent.split('(')[0].trim();
+                  const counterSpan = tag.querySelector('span') || tag;
+                  counterSpan.textContent = `${tagText} (${tagVisibleCount}/${tagOperationsCount})`;
+                } else if (!searchTerm) {
+                  const tagText = tag.textContent.split('(')[0].trim();
+                  const counterSpan = tag.querySelector('span') || tag;
+                  counterSpan.textContent = tagText;
+                }
+              });
+
+              // Update search input placeholder with results count
+              if (searchTerm) {
+                searchInput.style.borderColor = totalVisible > 0 ? 'var(--success-color)' : 'var(--error-color)';
+                searchInput.setAttribute('placeholder', 
+                  totalVisible > 0 
+                    ? `Ditemukan ${totalVisible} dari ${totalEndpoints} endpoint` 
+                    : 'Tidak ada endpoint yang cocok'
+                );
+              } else {
+                searchInput.style.borderColor = 'var(--border-color)';
+                searchInput.setAttribute('placeholder', 'Cari endpoint, method, atau deskripsi...');
+              }
+            }
+
+            // Store operation summaries for search
+            document.querySelectorAll('.opblock').forEach(op => {
+              const summary = op.querySelector('.opblock-summary-description')?.textContent || '';
+              op.setAttribute('data-summary', summary);
+            });
+
+            // Auto-focus search input
+            searchInput.focus();
+
+            // Clean up version info
+            const removeVersionElements = () => {
+              document.querySelectorAll('pre.version').forEach(el => el.remove());
+            };
+            
+            removeVersionElements();
+            
+            // Re-run cleanup after a delay for dynamic content
+            setTimeout(removeVersionElements, 1000);
+          },
+
+          // Error handling
+          onFailure: function(err) {
+            console.error('Swagger UI Error:', err);
+            Swal.fire({
+              title: '⚠️ Terjadi Kesalahan',
+              text: 'Gagal memuat dokumentasi API. Silakan refresh halaman atau coba lagi nanti.',
+              icon: 'error',
+              confirmButtonText: 'Refresh Halaman',
+              confirmButtonColor: '#EF4444'
+            }).then(result => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+          }
+        });
+
+        window.ui = ui;
+      };
+
+      // Enhanced keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        // Ctrl/Cmd + K to focus search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          const searchInput = document.getElementById('enhanced-search-input');
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+          }
+        }
+        
+        // Escape to clear search
+        if (e.key === 'Escape') {
+          const searchInput = document.getElementById('enhanced-search-input');
+          if (searchInput && document.activeElement === searchInput) {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+          }
+        }
+      });
+
+      // Performance optimization
+      const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      };
+    </script>
+    
+    <!-- Enhanced Footer -->
+    <footer class="footer text-white py-16 mt-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <!-- Footer Top -->
+          <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 mb-12">
+            <!-- Brand Section -->
+            <div class="lg:col-span-1 space-y-6">
+              <div class="flex items-center space-x-3">
+                <div class="navbar-logo">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <span class="font-bold text-xl">Vrypt API</span>
+              </div>
+              <p class="text-gray-400 text-base leading-relaxed max-w-sm">
+                Platform dokumentasi API terlengkap untuk developer Indonesia. Membangun masa depan pengembangan aplikasi dengan solusi modern dan teknologi terdepan.
+              </p>
+              <div class="social-links">
+                <a href="https://github.com/gwkrip" class="social-link" aria-label="GitHub">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/Vrypt APIhub" class="social-link" aria-label="Instagram">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                <a href="https://linkedin.com/company/Vrypt API-hub" class="social-link" aria-label="LinkedIn">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                <a href="https://twitter.com/Vrypt APIhub" class="social-link" aria-label="Twitter">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Documentation Section -->
+            <div class="footer-section">
+              <h4>Dokumentasi</h4>
+              <ul class="space-y-3">
+                <li><a href="/docs/getting-started" class="footer-link">Panduan Memulai</a></li>
+                <li><a href="/docs/authentication" class="footer-link">Autentikasi</a></li>
+                <li><a href="/docs/rate-limits" class="footer-link">Batas Penggunaan</a></li>
+                <li><a href="/docs/examples" class="footer-link">Contoh Penggunaan</a></li>
+                <li><a href="/docs/sdks" class="footer-link">SDK & Libraries</a></li>
+              </ul>
+            </div>
+            
+            <!-- Support Section -->
+            <div class="footer-section">
+              <h4>Dukungan</h4>
+              <ul class="space-y-3">
+                <li><a href="/help" class="footer-link">Pusat Bantuan</a></li>
+                <li><a href="/community" class="footer-link">Komunitas</a></li>
+                <li><a href="/support/contact" class="footer-link">Hubungi Kami</a></li>
+                <li><a href="/support/bug-report" class="footer-link">Laporkan Bug</a></li>
+                <li><a href="/changelog" class="footer-link">Perubahan API</a></li>
+              </ul>
+            </div>
+            
+            <!-- Resources Section -->
+            <div class="footer-section">
+              <h4>Sumber Daya</h4>
+              <ul class="space-y-3">
+                <li><a href="/status" class="footer-link">Status Server</a></li>
+                <li><a href="/statistics" class="footer-link">Statistik Penggunaan</a></li>
+                <li><a href="/blog" class="footer-link">Blog & Tutorial</a></li>
+                <li><a href="/tools" class="footer-link">Developer Tools</a></li>
+                <li><a href="/contribute" class="footer-link">Kontribusi</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Footer Divider -->
+          <div class="border-t border-gray-700 pt-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+              <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6">
+                <p class="text-gray-500 text-sm">
+                  © 2024 Vrypt API. Semua hak dilindungi undang-undang.
+                </p>
+                <div class="flex items-center space-x-4 text-sm">
+                  <a href="/privacy" class="footer-link">Kebijakan Privasi</a>
+                  <span class="text-gray-600">•</span>
+                  <a href="/terms" class="footer-link">Syarat Layanan</a>
+                  <span class="text-gray-600">•</span>
+                  <a href="/security" class="footer-link">Keamanan</a>
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-4">
+                <div class="status-indicator status-online">
+                  <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span class="text-sm">Semua sistem berjalan normal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Footer Bottom -->
+          <div class="mt-8 pt-6 border-t border-gray-800">
+            <div class="text-center">
+              <p class="text-gray-500 text-sm leading-relaxed">
+                Dibuat dengan ❤️ untuk komunitas developer Indonesia. 
+                <br class="sm:hidden">
+                Powered by modern web technologies dan komitmen terhadap open source.
+              </p>
+              <div class="flex justify-center items-center space-x-2 mt-3 text-xs text-gray-600">
+                <span>Made with</span>
+                <span class="text-red-400">♥</span>
+                <span>in Indonesia</span>
+                <span class="mx-2">•</span>
+                <span>Version 2.1.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 translate-y-8 z-40" aria-label="Kembali ke atas">
+      <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+
+    <!-- Additional Scripts -->
+    <script>
+      // Back to Top functionality
+      const backToTopButton = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.style.opacity = '1';
+          backToTopButton.style.transform = 'translateY(0)';
+        } else {
+          backToTopButton.style.opacity = '0';
+          backToTopButton.style.transform = 'translateY(32px)';
+        }
+      });
+      
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Enhanced analytics tracking (placeholder)
+      function trackEvent(eventName, eventData = {}) {
+        // Placeholder for analytics tracking
+        console.log('Event tracked:', eventName, eventData);
+      }
+
+      // Track search usage
+      document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('enhanced-search-input');
+        if (searchInput) {
+          searchInput.addEventListener('focus', () => {
+            trackEvent('search_focus');
+          });
+        }
+      });
+
+      // Service Worker registration (optional)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+
+      // Accessibility improvements
+      document.addEventListener('keydown', (e) => {
+        // Tab navigation enhancement
+        if (e.key === 'Tab') {
+          document.body.classList.add('keyboard-navigation');
+        }
+      });
+
+      document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+      });
+
+      // Dark mode preference detection
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      prefersDarkScheme.addEventListener('change', (e) => {
+        // Handle system theme changes if needed
+        console.log('System theme changed to:', e.matches ? 'dark' : 'light');
+      });
+    </script>
+
+    <!-- CSS for accessibility -->
+    <style>
+      .keyboard-navigation *:focus {
+        outline: 2px solid var(--accent-color) !important;
+        outline-offset: 2px;
+      }
+      
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        :root {
+          --border-color: #64748b;
+          --text-secondary: #f8fafc;
+        }
+      }
+      
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        
+        .animate-pulse {
+          animation: none;
+        }
+      }
+      
+      /* Print styles */
+      @media print {
+        .navbar, .footer, #backToTop {
+          display: none !important;
+        }
+        
+        body {
+          background: white !important;
+          color: black !important;
+        }
+        
+        .swagger-ui * {
+          background: white !important;
+          color: black !important;
+        }
+      }
+    </style>
+  </body>
+</html>
